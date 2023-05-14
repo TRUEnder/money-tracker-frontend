@@ -60,10 +60,10 @@
                             <a href="/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="records"><i class="fas fa-chart-bar"></i>Records</a>
+                            <a href="index.php/records"><i class="fas fa-chart-bar"></i>Records</a>
                         </li>
                         <li>
-                            <a href="records/add"><i class="fas fa-plus-square"></i>Add Records</a>
+                            <a href="index.php/records/add"><i class="fas fa-plus-square"></i>Add Records</a>
                         </li>
                     </ul>
                 </div>
@@ -85,10 +85,10 @@
                             <a href="/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="records"><i class="fas fa-chart-bar"></i>Records</a>
+                            <a href="index.php/records"><i class="fas fa-chart-bar"></i>Records</a>
                         </li>
                         <li>
-                            <a href="records/add"><i class="fas fa-plus-square"></i>Add Records</a>
+                            <a href="index.php/records/add"><i class="fas fa-plus-square"></i>Add Records</a>
                         </li>
                     </ul>
                 </nav>
@@ -103,7 +103,12 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
+			    <?php if (validation_errors()) : ?>
+                                <div class="alert alert-danger">
+                                    <?php echo validation_errors(); ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php echo form_open("index.php/dashboard/searchRecords", 'enctype="multipart/form-data" class="form-header"'); ?>
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>

@@ -11,8 +11,18 @@ class Records extends CI_Controller {
     }
 
     public function index() {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('search', 'Search', 'required');
+
         $data['records'] = $this->record_model->getAllRecords();
-        $this->load->view('my_records', $data);
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('my_records', $data);
+        } else {
+            $this->searchRecords();
+        }
     }
 
     public function add() {
@@ -41,7 +51,7 @@ class Records extends CI_Controller {
 
     public function insertrecord() {
         $this->record_model->insertRecord();
-        redirect('records');
+        redirect('index.php/records');
     }
 
     public function editrecord($id) {
@@ -56,12 +66,18 @@ class Records extends CI_Controller {
             $this->edit($id);
         } else {
             $this->record_model->updateRecord($id);
-            redirect('records');
+            redirect('index.php/records');
         }
     }
 
     public function delete($id) {
         $this->record_model->deleteRecord($id);
-        redirect('records');
+        redirect('index.php/records');
+    }
+
+    public function searchRecords()
+    {
+        $query = $this->input->post('search');
+        redirect('index.php/search/' . $query);
     }
 }

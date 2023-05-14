@@ -128,7 +128,7 @@
                                                     <?php echo validation_errors(); ?>
                                                 </div>
                                             <?php endif; ?>
-                                            <?php echo form_open("../../records/editrecord/" . $record['id'], 'enctype="multipart/form-data" class="form-horizontal"'); ?>
+                                            <?php echo form_open("index.php/records/editrecord/" . $record['id'], 'enctype="multipart/form-data" class="form-horizontal"'); ?>
                                                 <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1">Amount*</label>
                                                     <input id="cc-pament" name="amount" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="10000" value="<?php echo $record['amount'] ?>">

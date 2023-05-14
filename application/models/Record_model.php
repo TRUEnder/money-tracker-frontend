@@ -8,7 +8,7 @@ class Record_model extends CI_Model {
     public function __construct() {
         $this->client = new Client([
             // TODO: Tambahkan Base URL API
-            'base_uri' => "base_url_backend_Anda",
+            'base_uri' => "https://backend-dot-submission-mgce-guntur.et.r.appspot.com/",
         ]);
     }
 
@@ -133,6 +133,14 @@ class Record_model extends CI_Model {
 
     public function deleteRecord($id) {
         $response = $this->client->request('DELETE', '/deleterecord/'.$id, []);
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return $result;
+    }
+
+    public function searchRecords($query)
+    {
+        $response = $this->client->request('GET', '/searchrecords?s=' . $query, []);
         $result = json_decode($response->getBody()->getContents(), true);
 
         return $result;

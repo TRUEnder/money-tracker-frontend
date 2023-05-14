@@ -126,7 +126,7 @@
                                                     <?php echo validation_errors(); ?>
                                                 </div>
                                             <?php endif; ?>
-                                            <?php echo form_open('../records/add', 'enctype="multipart/form-data" class="form-horizontal"'); ?>
+                                            <?php echo form_open('index.php/records/add', 'enctype="multipart/form-data" class="form-horizontal"'); ?>
                                             
                                                 <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1">Amount*</label>
